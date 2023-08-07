@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- Add this in personalization.page.html -->
+  <input type="file" (change)="handleImageUpload($event)">
+
+
+
+    <!-- Canvas to preview the item with personalized text -->
+    <canvas #canvas width="300" height="300"></canvas>
+
+    <!-- Input for custom text -->
+    <ion-item>
+      <ion-label position="floating">Enter Text:</ion-label>
+      <ion-input [(ngModel)]="customText"></ion-input>
+    </ion-item>
+
+    <input type="file" (change)="handleCustomImageUpload($event)">
+  
+    <!-- Font Selector -->
+    <ion-item>
+      <ion-label>Font:</ion-label>
+      <ion-select [(ngModel)]="selectedFont">
+        <ion-select-option value="Arial">Arial</ion-select-option>
+        <ion-select-option value="Helvetica">Helvetica</ion-select-option>
+        <ion-select-option value="Georgia">Georgia</ion-select-option>
+        <!-- Add more font options as needed -->
+      </ion-select>
+    </ion-item>
+  
+    <!-- Color Picker -->
+    <ion-item>
+      <ion-label>Text Color:</ion-label>
+      <input type="color" [(ngModel)]="textColor">
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Text Size (px):</ion-label>
+      <ion-input type="number" [(ngModel)]="textSize"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="rotateText()">Rotate Text</ion-button>
+  
+    <!-- Buttons -->
+    <ion-button expand="full" (click)="applyChanges()">Apply Changes</ion-button>
+
+    <!-- Add this button to save the customized image -->
+   <ion-button expand="full" (click)="saveCustomizedImage()">Save Customized Image</ion-button>
+
+</ion-content>
